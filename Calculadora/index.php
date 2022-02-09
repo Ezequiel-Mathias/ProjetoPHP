@@ -134,7 +134,7 @@
         <ul class="nav" id="nav">
             <li><a href="../MediaPHP/index.php">Calculo De Média</a> </li>
             <li><a href="../Tabuada/index.php">Tabuada</a> </li>
-            <li><a href="#">Pares e Impar</a> </li>
+            <li><a href="../PareImpar/index.php">Pares e Impar</a> </li>
            
         </ul>
     </div>

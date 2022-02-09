@@ -1,30 +1,6 @@
 <?php
 
-	$valor1 = (int) 0;
-	$valor2 = (int) 0;
-	$resultado = (string) null;
-	$calculo = (int) 0;
-	$contador = (int) 0;
-
-	if(isset($_POST['btncalc'])){
-		$valor1 = $_POST['txtn1'];
-		$valor2 = $_POST['txtn2'];
-		
-		if($valor1 == null || $valor2 == null)
-			echo '<h1 class="erros">Preencha todos os campos !</h1>';
-		
-		else if(!is_numeric($valor1) || !is_numeric($valor2))
-			echo'<h1 class="erros">Não são permitido letras! </h1>';
-		else{
-			while($contador <= $valor2){
-				$calculo = $valor1 * $contador;
-				$resultado .= "$valor1 x $contador = $calculo <br>";
-				$contador++;
-			}
-
-		}
-		
-	}
+	
 
 
 ?>
@@ -38,7 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" href="css.css">
 		<link rel="stylesheet" href="menu.css">
-		<title>Tabuada</title>
+		<title>Par e Impar</title>
     </head>
 	<body>
 	<!--Menu Burguer-->	
@@ -52,7 +28,7 @@
         <ul class="nav" id="nav">
             <li><a href="../MediaPHP/index.php">Calculo De Média</a> </li>
             <li><a href="../Calculadora/index.php">Caculadora Simples</a> </li>
-            <li><a href="../PareImpar/index.php">Pares e Impar</a> </li>
+            <li><a href="../Tabuada/index.php">Tabuada</a></li>
            
         </ul>
     </div>
@@ -62,19 +38,24 @@
 	 <!--Tabuada-->
         <div id="conteudo">
             <div id="titulo">
-                Tabuada
+                Par e Impar
             </div>
 
             <div id="form">
                 <form name="frmcalculadora" method="post" action="">
 				
-						Tabuada:<input type="text" name="txtn1" value="<?php echo($valor1);?>" > <br>
-						Contador:<input type="text" name="txtn2" value="<?php echo($valor2);?>" > <br>
+						NºInicial:<input type="text" name="txtn1" value="<?php echo($valor1);?>" > <br>
+						NºFinal:<input type="text" name="txtn2" value="<?php echo($valor2);?>" > <br>
 						<div id="container_opcoes">
 						<input type="submit" name="btncalc" value ="Calcular" id="botaocalcular" >	
-						</div>	
-						<div id="resultado">
-						<?=$resultado;?>
+						</div>
+						<p class="textimparepar">NºPares:</p>	
+						<div id="caixapar">
+						
+						</div>
+						<p class="textimparepar">NºImpar:</p>
+						<div id="caixaimpar">
+						
 						</div>
 						
 					</form>

@@ -81,7 +81,7 @@ $media = ($nota1 + $nota2 + $nota3 + $nota4) / 4;
         <ul class="nav" id="nav">
             <li><a href="../Calculadora/index.php">Calculadora Simples</a> </li>
             <li><a href="../Tabuada/index.php">Tabuada</a> </li>
-            <li><a href="#">Pares e Impar</a> </li>
+            <li><a href="../PareImpar/index.php">Pares e Impar</a> </li>
            
         </ul>
     </div>
