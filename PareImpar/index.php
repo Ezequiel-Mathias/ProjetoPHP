@@ -6,7 +6,7 @@
 	$quantidadepar = 0;
 	$quantidadeimpar = 0;
 	$contador = 0;
-	$resultacheckbox = (String) null;
+	$resultacheckbox = (int) 0;
 	
 	
 	if(isset($_POST['btncalc'])){
@@ -28,19 +28,16 @@
 			}
 			
 	
-	}
-	else if(isset($_POST['numeroinicial'])){
-		while($contador <= 500){
-			$contador++;
-			$resultacheckbox .= $contador;
-			$contador++;
-		}
-	}
-	else if($caixa1 == 0 || $caixa2 == 0 ){
+	}else if($caixa1 == 0 || $caixa2 == 0 ){
 		echo '<h1 class="erros">ERRO selecione um numero nas duas caixas </h1>';
 	}
 		
-	
+	while($contador <= 500){
+		$resultacheckbox .= '<option value="<?=$contador?>">  1 </option>';
+		$contador++;
+		
+	}
+	$resultacheckbox .= $contador
 
 ?>
 
@@ -74,7 +71,7 @@
     <div class="menu-bg" id="menu-bg"></div>
     <script src="menu.js"></script>
 
-	 <!--Tabuada-->
+	 <!--Tabuada  -->
         <div id="conteudo">
             <div id="titulo">
                 Par e Impar
@@ -85,26 +82,15 @@
 				
 						NºInicial:<select name="numeroinicial" id="numeroinicial">
 						<option value="0" selected>Por favor selecione um numero</option>
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >7</option>
-							<option value="8" >8</option>
-							
+						<?=$resultacheckbox?>
+						
+						 <option value="1" >1</option>
 						</select>
 						NºFinal: <select name="numerofinal" id="numerofinal">
 						<option value="0">Por favor selecione um numero</option>
-							<option value="1" >1</option>
-							<option value="2" >2</option>
-							<option value="3" >3</option>
-							<option value="4" >4</option>
-							<option value="5" >5</option>
-							<option value="6" >6</option>
-							<option value="7" >7</option>
-							<option value="8" >8</option>
+						
+						<?=$resultacheckbox?>
+
 						</select> <br>
 
 						<div id="container_opcoes">

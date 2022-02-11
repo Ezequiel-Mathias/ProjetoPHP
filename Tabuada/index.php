@@ -15,6 +15,8 @@
 		
 		else if(!is_numeric($valor1) || !is_numeric($valor2))
 			echo'<h1 class="erros">Não são permitido letras! </h1>';
+		else if($valor1 == 0)
+			echo'<h1 class="erros">Escolha outra Tabuada</h1>';	
 		else{
 			while($contador <= $valor2){
 				$calculo = $valor1 * $contador;
