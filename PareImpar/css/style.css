@@ -1,13 +1,12 @@
 #conteudo{
     margin-top: 180px;
     width: 500px;
-    height: 500px;
+    height: 600px;
     margin-left: auto;
     margin-right: auto;
     border: solid 1px #000000;
     text-align: center;
     background-color: #ffffff;
-   
 }
 
 #titulo{
@@ -45,13 +44,12 @@ input{
    box-shadow: -1px -1px 1px 2px black; 
 }
 #caixaimpar{
-    margin-top:70px;
     margin-left: 270px;
     width: 150px;
     height: 210px;
     overflow-y: auto;
     box-shadow: -1px -1px 1px 2px black;
-    margin-top: -270px; 
+    margin-top: 40px; 
     padding-top: 10px;
  }
 
@@ -69,7 +67,20 @@ input{
     margin-left: 230px;
     margin-top: 10px;
 }
-.textimparepar{
-    color: #b3b3b3;
+.textpar{
+    color: #000000;
     margin-right: 400px;
+}
+.textimpar{
+    margin-top: -370px;
+
+}
+.textimpar2{
+    margin-left: 150px;
+}
+#numeroinicial{
+    padding-right: 100px;
+}
+#numerofinal{
+    padding-right: 100px;
 }

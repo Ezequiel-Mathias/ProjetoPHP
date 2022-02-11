@@ -1,7 +1,46 @@
 <?php
-
+	$caixa1 = (int) 0;
+	$caixa2 = 0;
+	$resultadopar = (String) null;
+	$resultadoimpar = (String) null;
+	$quantidadepar = 0;
+	$quantidadeimpar = 0;
+	$contador = 0;
+	$resultacheckbox = (String) null;
 	
+	
+	if(isset($_POST['btncalc'])){
+		$caixa1 = $_POST['numeroinicial'];
+		$caixa2 = $_POST['numerofinal'];
 
+		
+			//caixa1 == contador
+			while($caixa1 <= $caixa2){
+			
+			if($caixa1 % 2 == 0){
+				$quantidadepar++;
+				$resultadopar .= "$caixa1 <br>";	
+			}else{
+				$quantidadeimpar++;
+				$resultadoimpar .= "$caixa1 <br>";
+			}
+			$caixa1++;
+			}
+			
+	
+	}
+	else if(isset($_POST['numeroinicial'])){
+		while($contador <= 500){
+			$contador++;
+			$resultacheckbox .= $contador;
+			$contador++;
+		}
+	}
+	else if($caixa1 == 0 || $caixa2 == 0 ){
+		echo '<h1 class="erros">ERRO selecione um numero nas duas caixas </h1>';
+	}
+		
+	
 
 ?>
 
@@ -44,20 +83,48 @@
             <div id="form">
                 <form name="frmcalculadora" method="post" action="">
 				
-						NºInicial:<input type="text" name="txtn1" value="<?php echo($valor1);?>" > <br>
-						NºFinal:<input type="text" name="txtn2" value="<?php echo($valor2);?>" > <br>
+						NºInicial:<select name="numeroinicial" id="numeroinicial">
+						<option value="0" selected>Por favor selecione um numero</option>
+							<option value="1" >1</option>
+							<option value="2" >2</option>
+							<option value="3" >3</option>
+							<option value="4" >4</option>
+							<option value="5" >5</option>
+							<option value="6" >6</option>
+							<option value="7" >7</option>
+							<option value="8" >8</option>
+							
+						</select>
+						NºFinal: <select name="numerofinal" id="numerofinal">
+						<option value="0">Por favor selecione um numero</option>
+							<option value="1" >1</option>
+							<option value="2" >2</option>
+							<option value="3" >3</option>
+							<option value="4" >4</option>
+							<option value="5" >5</option>
+							<option value="6" >6</option>
+							<option value="7" >7</option>
+							<option value="8" >8</option>
+						</select> <br>
+
 						<div id="container_opcoes">
 						<input type="submit" name="btncalc" value ="Calcular" id="botaocalcular" >	
 						</div>
-						<p class="textimparepar">NºPares:</p>	
+						<p class="textpar">NºPares:</p>	
+
 						<div id="caixapar">
-						
+							<?= $resultadopar; ?>
 						</div>
-						<p class="textimparepar">NºImpar:</p>
+
+						<p class="textpar">Quantidade de Numeros pares: <?=$quantidadepar;?></p>
+
+						<p class="textimpar">NºImpar:</p>
+
 						<div id="caixaimpar">
-						
+						<?= $resultadoimpar; ?>
 						</div>
-						
+
+						<p class="textimpar2">Quantidade de <br>Numeros Impares: <?=$quantidadeimpar;?></p>
 					</form>
             </div>
            
