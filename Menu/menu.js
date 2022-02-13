@@ -1,5 +1,5 @@
 /******************************************************
-*Objetivo:função do menu burguer
+*Objetivo:função do menu burguer padronizado para todos os exercicios !
 *Autor:Ezequiel Mathias
 *Data:05/02/22 
 *Versão:1.0

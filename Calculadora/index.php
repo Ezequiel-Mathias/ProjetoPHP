@@ -1,126 +1,50 @@
 <?php
-// importação !
-// include ou require - permite fazer a importação de arquivos no PHP
-//Utilizando a opçao com _once, o servidor realiza uma restrição para
-//importar somente uma vez o arquivo (melhor opção)
-
-// include()
-// include_onde()
-// Diferença entre elas 
-
-// require()
-// require_once()
-
-//import do arquivo de configuraçoes 
-	 require_once('modulo/config.php');
-//import do arquivo de funçoes para calculos matematicos
-	require_once('modulo/calculos.php');
+	//Imports
+	 require_once('../Erros/erros.php');
+	 require_once('../Calculos/calculos.php');
 	
-
-	//Declaração de variaveis
-	$valor1 = (double) 0;
-	$valor2 = (double) 0;
-	$resultado = (double) 0;
-	$opçao = (string) null;
-
-
-	
-	
-
-
-
-
-	//gettype fala o que essa variavel é
-	
-	//settype permite modificar o tipo de dados de uma variavel
-
-	/* Exemplo de uma variavel que nasce do tipo inteiro e depos
-	é comvertido para string
-
-	$nome = 10;
-	echo(gettype($nome));
-
-	settype($nome, "string");
-
-	echo(gettype($nome));
-	*/
-
-	/*
-	strtoupper() = permite comverter o texto para tudo minusculo
-	strtolower() = permite comverter o texto para tudo maiusculo
-
-	*/
+	 $valor1 = (double) 0;
+	 $valor2 = (double) 0;
+	 $resultado = (double) 0;
+	 $opçao = (string) null;
 
 	if(isset($_POST['btncalc'])){
-		//recebe os dados do formulario para fazer a validação
+		
 		$valor1 = $_POST['txtn1'];
 		$valor2 = $_POST['txtn2'];
-		
-		//agora tenho que usar o valor em maiusculo para o tratamento, pois vai chegar em maiusculo
 
-		//else if separado exige dois processamentos, o ideal é um so então
-		//usa-se ifelse junto ! que ai vai um processamento só !!
-
-		//elseif sem os {} pois o php vai respeitar a identação mais so pode se
-		//tiver um comando só dentro do if e elseif se tiver mais de um da erro !!
-
+		//Verificação das caixas vazias
 		if($_POST['txtn1'] == '' || $_POST['txtn2'] == ''){
-			echo (ERRO_MSG_CAIXA_VAZIA);
+			echo ERRO_MSG_CAIXA_VAZIA;
 
 		}else
 		{
-				//validaçao de tratamento de erro para rdo sem escolha
-				if(!isset($_POST['rdocalc']))
-				echo (ERRO_MSG_OPERAÇAO_CALCULO);
+				
+			if(!isset($_POST['rdocalc']))
+			echo ERRO_MSG_OPERAÇAO_CALCULO;
+
+			else{
+				//Verificação das caixas com string
+				if(!is_numeric($valor1) || !is_numeric($valor2))
+				echo ERRO_MSG_CARACTER_DO_NUMERO;
 
 				else{
-					if(!is_numeric($valor1) || !is_numeric($valor2))
-					echo (ERRO_MSG_CARACTER_DO_NUMERO);
-					else{
-					
-							//vai comverter tudo que chegar em maiusculo para nao der erro caso o cara do front faça
-							//caca
-							//coloquei a opçao aqui em baixo pois so podemos receber o  valor do rdo quando ele existir
-							$opçao = strtoupper($_POST['rdocalc']);
-
-							//CHAMANDO A FUNÇAO 
-
-							$resultado = operaçaoMatematica($valor1, $valor2, $opçao);
-						}
+					$opçao = strtoupper($_POST['rdocalc']);
+					//Função importada
+					$resultado = operaçaoMatematicaCalculadora($valor1, $valor2, $opçao);
 					}
+				 }
 					
-				}
+			 }
 
-			}
-
-
-
-			/*if($opçao == 'SOMAR')
-								$resultado = $valor1 + $valor2;
-							elseif($opçao == 'SUBTRAIR')
-								$resultado = $valor1 - $valor2;
-							elseif($opçao == 'MULTIPLICAR')
-								$resultado = $valor1 * $valor2;
-							elseif($opçao == 'DIVIDIR'){
-							//validação para tratamento de erro da divisão por 0
-								if($valor2 == 0)
-								echo '<script> alert("não é possivel fazer divisão com o valor 0 ");</script>';
-							else	
-							$resultado = $valor1 / $valor2;
-							}
-							//round() - permite arredondar valores decimais para o tanto de casas que vc quiser
-
-							$resultado = round($resultado, 2);*/
-					
-
-
+		}
 ?>
 <html>
     <head>
         <title>Calculadora - Simples</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" href="css.css">
-		<link rel="stylesheet" href="menu.css">
+		<link rel="stylesheet" type="text/css" href="../Calculadora/stylesDoArquivo/style.css">
+		<link rel="stylesheet" href="../Calculadora/stylesDoArquivo/css.css">
+		<link rel="stylesheet" href="../Calculadora/stylesDoArquivo/menu.css">
     </head>
 	<body>
 	<!--Menu Burguer-->	
@@ -150,8 +74,8 @@
             <div id="form">
                 <form name="frmcalculadora" method="post" action="">
 				
-						Valor 1:<input type="text" name="txtn1" value="<?php echo($valor1);?>" > <br>
-						Valor 2:<input type="text" name="txtn2" value="<?php echo($valor2);?>" > <br>
+						Valor 1:<input type="text" name="txtn1" value="<?=$valor1;?>" > <br>
+						Valor 2:<input type="text" name="txtn2" value="<?=$valor2;?>" > <br>
 						<div id="container_opcoes">
 							<input type="radio" name="rdocalc" value="somar" <?=$opçao == 'SOMAR'?'checked':null;?>>Somar <br>
 							<input type="radio" name="rdocalc" value="subtrair"<?=$opçao == 'SUBTRAIR'?'checked':null;?> >Subtrair <br>
@@ -169,8 +93,8 @@
             </div>
            
         </div>
-        
-	<script src="menu.js"></script>	
+     <!--Importação da pasta menu JS-->
+	<script src="../Menu/menu.js"></script>	
 	</body>
 
 </html>

@@ -1,4 +1,8 @@
 <?php
+	//Importaçoes
+	require_once('../Erros/erros.php');
+
+
 	$caixa1 = (int) 0;
 	$caixa2 = 0;
 	$resultadopar = (String) null;
@@ -6,13 +10,25 @@
 	$quantidadepar = 0;
 	$quantidadeimpar = 0;
 	$contador = 0;
-	$resultacheckbox = (int) 0;
+	$resultacheckboxinicial = (int) 0;
+	$resultacheckboxfinal = (int) 0;
+	$contador2 = 100;
 	
 	
 	if(isset($_POST['btncalc'])){
 		$caixa1 = $_POST['numeroinicial'];
 		$caixa2 = $_POST['numerofinal'];
 
+		if($caixa1 == $caixa2){
+			echo ERRO_NUMEROS_IGUAIS_IMPAR_PAR;
+		}
+
+
+		else if($caixa1 > $caixa2){
+			echo ERRO_NUMERO_INICIAL_MAIOR;
+		}
+
+		else if($caixa1 >= 0 || $caixa2 >= 0){
 		
 			//caixa1 == contador
 			while($caixa1 <= $caixa2){
@@ -26,18 +42,23 @@
 			}
 			$caixa1++;
 			}
+		}else{
+			echo ERRO_MSG_SELEÇAO_DE_NUMERO;
+		}
 			
-	
-	}else if($caixa1 == 0 || $caixa2 == 0 ){
-		echo '<h1 class="erros">ERRO selecione um numero nas duas caixas </h1>';
-	}
+			
+
+	} 
 		
 	while($contador <= 500){
-		$resultacheckbox .= '<option value="<?=$contador?>">  1 </option>';
-		$contador++;
-		
+		$resultacheckboxinicial .= '<option value="' . $contador . '">'. $contador .'</option>';
+		$contador++;	
 	}
-	$resultacheckbox .= $contador
+	while($contador2 <= 1000){
+		$resultacheckboxfinal .= '<option value="' . $contador2 . '">'. $contador2 .'</option>';
+		$contador2++;	
+	}
+	
 
 ?>
 
@@ -47,9 +68,9 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" href="css.css">
-		<link rel="stylesheet" href="menu.css">
+		<link rel="stylesheet" type="text/css" href="../PareImpar/stylesDoArquivo/style.css">
+		<link rel="stylesheet" href="../PareImpar/stylesDoArquivo/css.css">
+		<link rel="stylesheet" href="../PareImpar/stylesDoArquivo/menu.css">
 		<title>Par e Impar</title>
     </head>
 	<body>
@@ -81,16 +102,13 @@
                 <form name="frmcalculadora" method="post" action="">
 				
 						NºInicial:<select name="numeroinicial" id="numeroinicial">
-						<option value="0" selected>Por favor selecione um numero</option>
-						<?=$resultacheckbox?>
-						
-						 <option value="1" >1</option>
+						<option value="-2" selected>Por favor selecione um numero</option>
+						<?=$resultacheckboxinicial?>
 						</select>
-						NºFinal: <select name="numerofinal" id="numerofinal">
-						<option value="0">Por favor selecione um numero</option>
-						
-						<?=$resultacheckbox?>
 
+						NºFinal: <select name="numerofinal" id="numerofinal">
+						<option value="-1">Por favor selecione um numero</option>
+						<?=$resultacheckboxfinal?>
 						</select> <br>
 
 						<div id="container_opcoes">
@@ -116,7 +134,7 @@
            
         </div>
         
-	<script src="menu.js"></script>	
+	<script src="../Menu/menu.js"></script>	
 	</body>
 
 </html>

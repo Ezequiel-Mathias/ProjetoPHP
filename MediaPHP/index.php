@@ -1,4 +1,7 @@
 <?php
+//Importaçoes
+require_once('../Calculos/calculos.php');
+require_once('../Erros/erros.php');
 
 $nota1 = (double) 0;
 $nota2 = (double) 0;
@@ -6,25 +9,25 @@ $nota3 = (double) 0;
 $nota4 = (double) 0;
 $media = 0;
 
-
 if(isset($_POST['btncalc'])){
 $nota1 = $_POST['txtn1'];
 $nota2 = $_POST['txtn2'];
 $nota3 = $_POST['txtn3'];
 $nota4 = $_POST['txtn4'];
 
+//Verificação das caixas vazias
 if($_POST['txtn1'] == "" || $_POST['txtn2'] == "" || $_POST['txtn3'] == "" || $_POST['txtn4'] == ""){
-
 $media = 0;
-echo '<p class="msgErro">é obrigatorio preencher todos os campos !</p>';
+echo ERRO_MSG_CAIXA_VAZIA;
+
 }else{
 
-
+//Verificação de string nas caixas 
 if(!is_numeric($nota1) || !is_numeric($nota2) || !is_numeric($nota3) || !is_numeric($nota4)){
         $media = 0;  
-        echo '<p class="msgErro">Peencha apenas com numeros !</p>';
+        echo ERRO_MSG_CARACTER_DO_NUMERO;
      }else{
-        $media = ($nota1 + $nota2 + $nota3 + $nota4) / 4;
+        $media = calculosmedia($nota1,$nota2,$nota3,$nota4);
          }
     }   
 }
@@ -34,8 +37,8 @@ if(!is_numeric($nota1) || !is_numeric($nota2) || !is_numeric($nota3) || !is_nume
 <html lang="pt-BR">
     <head>
         <title>Média</title>
-       <link rel="stylesheet" type="text/css" href="css/style.css">
-       <link rel="stylesheet" href="menu.css">
+       <link rel="stylesheet" type="text/css" href="../MediaPHP/stylesDoArquivo/style.css">
+       <link rel="stylesheet" href="../MediaPHP/stylesDoArquivo/menu.css">
         <meta charset="utf-8">
     </head>
 	<body>
@@ -57,7 +60,7 @@ if(!is_numeric($nota1) || !is_numeric($nota2) || !is_numeric($nota3) || !is_nume
     </div>
     <div class="menu-bg" id="menu-bg"></div>
     <script src="menu.js"></script>
-  <!--Parte do conteudo-->
+    <!--Parte do conteudo-->
         <div id="conteudo">
             <header id="titulo">
                 Calculo de Médias
@@ -96,7 +99,7 @@ if(!is_numeric($nota1) || !is_numeric($nota2) || !is_numeric($nota3) || !is_nume
             </footer>
         </div>
         
-		<script src="menu.js"></script>	
+		<script src="../Menu/menu.js"></script>	
 	</body>
 
 

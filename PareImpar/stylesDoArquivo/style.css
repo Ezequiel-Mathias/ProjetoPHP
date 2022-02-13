@@ -60,9 +60,6 @@ input{
     float: left;
     text-align: left;
 }
-.erros{
-    text-align: center;   
-}
 #botaocalcular{
     margin-left: 230px;
     margin-top: 10px;
@@ -84,3 +81,8 @@ input{
 #numerofinal{
     padding-right: 100px;
 }
+.msgErro{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-weight: center;
+} 

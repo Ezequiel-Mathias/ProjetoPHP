@@ -1,29 +1,26 @@
 <?php
-
+	//importaçoes
+	require_once('../Calculos/calculos.php');
+	require_once('../Erros/erros.php');
 	$valor1 = (int) 0;
 	$valor2 = (int) 0;
-	$resultado = (string) null;
 	$calculo = (int) 0;
 	$contador = (int) 0;
+	$resultado = (string) null;
 
 	if(isset($_POST['btncalc'])){
 		$valor1 = $_POST['txtn1'];
 		$valor2 = $_POST['txtn2'];
 		
 		if($valor1 == null || $valor2 == null)
-			echo '<h1 class="erros">Preencha todos os campos !</h1>';
+			echo ERRO_MSG_CAIXA_VAZIA;
 		
 		else if(!is_numeric($valor1) || !is_numeric($valor2))
-			echo'<h1 class="erros">Não são permitido letras! </h1>';
+			echo ERRO_MSG_CARACTER_DO_NUMERO;
 		else if($valor1 == 0)
-			echo'<h1 class="erros">Escolha outra Tabuada</h1>';	
+			echo ERRO_TABUADA_DO_ZERO;	
 		else{
-			while($contador <= $valor2){
-				$calculo = $valor1 * $contador;
-				$resultado .= "$valor1 x $contador = $calculo <br>";
-				$contador++;
-			}
-
+			$resultado = calculoscalculadora($valor1,$valor2,$calculo,$contador);
 		}
 		
 	}
@@ -37,9 +34,9 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<link rel="stylesheet" href="css.css">
-		<link rel="stylesheet" href="menu.css">
+		<link rel="stylesheet" type="text/css" href="../Tabuada/stylesDoArquivo/style.css">
+		<link rel="stylesheet" href="../Tabuada/stylesDoArquivo/css.css">
+		<link rel="stylesheet" href="../Tabuada/stylesDoArquivo/menu.css">
 		<title>Tabuada</title>
     </head>
 	<body>
@@ -84,7 +81,7 @@
            
         </div>
         
-	<script src="menu.js"></script>	
+	<script src="../Menu/menu.js"></script>	
 	</body>
 
 </html>
