@@ -7,7 +7,8 @@
  **************************************************
  */
 
-function calculoscalculadora($valor1, $valor2, $calculo, $contador){
+ //função do projeto Tabuada
+function calculosTabuada($valor1, $valor2, $calculo, $contador){
 
     $resultado = (string) null;
     
@@ -20,13 +21,15 @@ function calculoscalculadora($valor1, $valor2, $calculo, $contador){
     return $resultado;
 
 }
+//função do projeto Media
 function calculosmedia($nota1, $nota2, $nota3, $nota4){
     $media = (int) 0;
     $media = ($nota1 + $nota2 + $nota3 + $nota4) / 4;
     return $media;
 
  }
- 
+
+ //função do projeto Calculadora
  function operaçaoMatematicaCalculadora($numero1, $numero2, $operaçao){
     $num1 = (double) $numero1;
     $num2 = (double) $numero2;
@@ -55,6 +58,35 @@ function calculosmedia($nota1, $nota2, $nota3, $nota4){
 
 return $result;	
      
+}
+//função do projeto Par e Impar
+function pareimpartextboxinicial(){
+    $contador = 0;
+    $resultadotextboxinicial = (String) null;
+
+    while($contador <= 500){
+		$resultadotextboxinicial .= '<option value="' . $contador . '">'. $contador .'</option>';
+		$contador++;	
+	}
+	
+
+    return 	$resultadotextboxinicial;
+    
+
+}
+function pareimpartextboxfinal(){
+    $contador2 = 100;
+    $resultadotextboxfinal = (String) null;
+    
+    while($contador2 <= 1000){
+		$resultadotextboxfinal .= '<option value="' . $contador2 . '">'. $contador2 .'</option>';
+		$contador2++;	
+	}
+	
+
+    return 	$resultadotextboxfinal;
+    
+
 }
 
 ?>

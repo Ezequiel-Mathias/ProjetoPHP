@@ -1,18 +1,22 @@
+
+
+
+
 <?php
 	//Importaçoes
 	require_once('../Erros/erros.php');
+	require_once('../Calculos/calculos.php');
 
-
+	$resultadotextboxinicial = (String) null;
+	$resultadotextboxfinal = (String) null;
 	$caixa1 = (int) 0;
 	$caixa2 = 0;
 	$resultadopar = (String) null;
 	$resultadoimpar = (String) null;
 	$quantidadepar = 0;
 	$quantidadeimpar = 0;
-	$contador = 0;
-	$resultacheckboxinicial = (int) 0;
-	$resultacheckboxfinal = (int) 0;
-	$contador2 = 100;
+	
+	
 	
 	
 	if(isset($_POST['btncalc'])){
@@ -49,16 +53,10 @@
 			
 
 	} 
-		
-	while($contador <= 500){
-		$resultacheckboxinicial .= '<option value="' . $contador . '">'. $contador .'</option>';
-		$contador++;	
-	}
-	while($contador2 <= 1000){
-		$resultacheckboxfinal .= '<option value="' . $contador2 . '">'. $contador2 .'</option>';
-		$contador2++;	
-	}
-	
+
+	//funçoes importadas
+	$resultadotextboxinicial = pareimpartextboxinicial();
+	$resultadotextboxfinal = pareimpartextboxfinal();
 
 ?>
 
@@ -103,12 +101,12 @@
 				
 						NºInicial:<select name="numeroinicial" id="numeroinicial">
 						<option value="-2" selected>Por favor selecione um numero</option>
-						<?=$resultacheckboxinicial?>
+						<?=$resultadotextboxinicial?>
 						</select>
 
 						NºFinal: <select name="numerofinal" id="numerofinal">
 						<option value="-1">Por favor selecione um numero</option>
-						<?=$resultacheckboxfinal?>
+						<?=$resultadotextboxfinal?>
 						</select> <br>
 
 						<div id="container_opcoes">

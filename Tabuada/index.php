@@ -20,7 +20,7 @@
 		else if($valor1 == 0)
 			echo ERRO_TABUADA_DO_ZERO;	
 		else{
-			$resultado = calculoscalculadora($valor1,$valor2,$calculo,$contador);
+			$resultado = calculosTabuada($valor1,$valor2,$calculo,$contador);
 		}
 		
 	}
