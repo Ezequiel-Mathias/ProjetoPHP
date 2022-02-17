@@ -3,7 +3,6 @@
 	require_once('../Calculos/calculos.php');
 	require_once('../Erros/erros.php');
 	$resultado = (string) null;
-	$caixas = array(0 , 0);
 	$resultado = calculosTabuada();
 ?>
 
@@ -46,8 +45,8 @@
             <div id="form">
                 <form name="frmcalculadora" method="post" action="">
 				
-						Tabuada:<input type="text" name="txtn1" value="<?php echo($caixas[0]);?>" > <br>
-						Contador:<input type="text" name="txtn2" value="<?php echo($caixas[1]);?>" > <br>
+						Tabuada:<input type="text" name="txtn1" value="0" > <br>
+						Contador:<input type="text" name="txtn2" value="0" > <br>
 						<div id="container_opcoes">
 						<input type="submit" name="btncalc" value ="Calcular" id="botaocalcular" >	
 						</div>	

@@ -43,11 +43,7 @@ function calculosTabuada(){
 function calculosmedia(){
 
     $vetormedia = array(0, 0 , 0 , 0 , 0);
-    $vetormedia[0] = 0;
-    $vetormedia[1] = 0;
-    $vetormedia[2] = 0;
-    $vetormedia[3] = 0;
-    $vetormedia[4] = 0;
+    
 
     if(isset($_POST['btncalc'])){
         $vetormedia[0] = $_POST['txtn1'];
@@ -106,43 +102,26 @@ return $result;
 
 //funções do projeto Par e Impar
 
-function pareimpartextboxinicial(){
+function pareimparselectinicial(){
     $contador = 0;
-    $resultadotextboxinicial = (String) null;
+    $resultadoselect = (String) null;
 
     while($contador <= 500){
-		$resultadotextboxinicial .= '<option value="' . $contador . '">'. $contador .'</option>';
+		$resultadoselect .= '<option value="' . $contador . '">'. $contador .'</option>';
 		$contador++;	
 	}
-    return 	$resultadotextboxinicial;
+    return 	$resultadoselect;
 }
-function pareimpartextboxfinal(){
+function pareimparselectfinal(){
     $contador2 = 100;
-    $resultadotextboxfinal = (String) null;
+    $resultadoselectfinal = (String) null;
     
     while($contador2 <= 1000){
-		$resultadotextboxfinal .= '<option value="' . $contador2 . '">'. $contador2 .'</option>';
+		$resultadoselectfinal .= '<option value="' . $contador2 . '">'. $contador2 .'</option>';
 		$contador2++;	
 	}
-    return 	$resultadotextboxfinal;
+    return 	$resultadoselectfinal;
 }
-function errosimparepar(){
-    if(isset($_POST['btncalc'])){
-        $vetor2 = array(0 , 0 );
-        $vetor2[0] = $_POST['numeroinicial'];
-		$vetor2[1] = $_POST['numerofinal'];
 
-		if($vetor2[0] == $vetor2[1]){
-			echo ERRO_NUMEROS_IGUAIS_IMPAR_PAR;
-		}
-		else if($vetor2[0] > $vetor2[1]){
-			echo ERRO_NUMERO_INICIAL_MAIOR;
-		}
-        else if ($vetor2[0] == -1 && $vetor2[1] == -1){
-			echo ERRO_MSG_SELEÇAO_DE_NUMERO;
-		}
-
-}
-}
 
 ?>

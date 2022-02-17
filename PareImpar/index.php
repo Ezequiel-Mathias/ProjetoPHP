@@ -12,8 +12,20 @@
 		$vetor2[0] = $_POST['numeroinicial'];
 		$vetor2[1] = $_POST['numerofinal'];
 
-		errosimparepar();
 		
+        if ($vetor2[0] == -1 && $vetor2[1] == -1){
+            echo ERRO_MSG_SELEÇAO_DE_NUMERO;
+            
+		}
+		else if($vetor2[0] > $vetor2[1]){
+            echo ERRO_NUMERO_INICIAL_MAIOR;
+		}
+
+		else if($vetor2[0] == $vetor2[1]){
+            echo ERRO_NUMEROS_IGUAIS_IMPAR_PAR;
+		}
+		else{
+
 		if($vetor2[0] >= 0 || $vetor2[1] >= 0){
 			//caixa1 == contador
 			while($vetor2[0] <= $vetor2[1]){
@@ -28,11 +40,12 @@
 			$vetor2[0]++;
 			}
 		}
+	}
 		
 	} 
 	//funçoes importadas textbox
-	$vetor1[2] = pareimpartextboxinicial();
-	$vetor1[3] = pareimpartextboxfinal();
+	$vetor1[2] = pareimparselectinicial();
+	$vetor1[3] = pareimparselectfinal();
 
 ?>
 
@@ -78,9 +91,9 @@
 						NºInicial:<select name="numeroinicial" id="numeroinicial">
 						<option value="-1" selected>Por favor selecione um numero</option>
 						<?=$vetor1[2];?>
-						</select>
+						</select> <br>
 
-						NºFinal: <select name="numerofinal" id="numerofinal">
+						NºFinal:<select name="numerofinal" id="numerofinal">
 						<option value="-1">Por favor selecione um numero</option>
 						<?=$vetor1[3];?>
 						</select> <br>
