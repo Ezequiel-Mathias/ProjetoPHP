@@ -2,35 +2,8 @@
 //Importaçoes
 require_once('../Calculos/calculos.php');
 require_once('../Erros/erros.php');
-
-$nota1 = (double) 0;
-$nota2 = (double) 0;
-$nota3 = (double) 0;
-$nota4 = (double) 0;
 $media = 0;
-
-if(isset($_POST['btncalc'])){
-$nota1 = $_POST['txtn1'];
-$nota2 = $_POST['txtn2'];
-$nota3 = $_POST['txtn3'];
-$nota4 = $_POST['txtn4'];
-
-//Verificação das caixas vazias
-if($_POST['txtn1'] == "" || $_POST['txtn2'] == "" || $_POST['txtn3'] == "" || $_POST['txtn4'] == ""){
-$media = 0;
-echo ERRO_MSG_CAIXA_VAZIA;
-
-}else{
-
-//Verificação de string nas caixas 
-if(!is_numeric($nota1) || !is_numeric($nota2) || !is_numeric($nota3) || !is_numeric($nota4)){
-        $media = 0;  
-        echo ERRO_MSG_CARACTER_DO_NUMERO;
-     }else{
-        $media = calculosmedia($nota1,$nota2,$nota3,$nota4);
-         }
-    }   
-}
+$media = calculosmedia();
 
 ?>
 <!DOCTYPE html>
@@ -70,22 +43,22 @@ if(!is_numeric($nota1) || !is_numeric($nota2) || !is_numeric($nota3) || !is_nume
                 <form name="frmMedia" method="post" action="">
                     <div>
                         <label>Nota 1:</label>
-                        <input type="text" name="txtn1" value="<?php echo ($nota1);?>"  > 
+                        <input type="text" name="txtn1" value="0"  > 
                     </div>
                     
                     <div>
                         <label>Nota 2:</label>
-                        <input type="text" name="txtn2" value="<?php echo ($nota2);?>" > 
+                        <input type="text" name="txtn2" value="0" > 
                     </div>
                     
                     <div>
                         <label>Nota 3:</label>
-                        <input type="text" name="txtn3" value="<?php echo ($nota3);?>" > 
+                        <input type="text" name="txtn3" value="0" > 
                     </div>
                     
                     <div>
                         <label>Nota 4:</label>
-                        <input type="text" name="txtn4" value="<?php echo ($nota4);?>" >
+                        <input type="text" name="txtn4" value="0" >
                     </div>
                     <div>
                         <input type="submit" name="btncalc" value ="Calcular" >

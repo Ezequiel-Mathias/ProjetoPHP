@@ -1,62 +1,38 @@
 
-
-
-
 <?php
 	//Importaçoes
 	require_once('../Erros/erros.php');
 	require_once('../Calculos/calculos.php');
-
-	$resultadotextboxinicial = (String) null;
-	$resultadotextboxfinal = (String) null;
-	$caixa1 = (int) 0;
-	$caixa2 = 0;
-	$resultadopar = (String) null;
-	$resultadoimpar = (String) null;
-	$quantidadepar = 0;
-	$quantidadeimpar = 0;
+	//vetor1 tem o intuito de substituir variaveis string e diminuir o codigo e vetor 2 com a mesma finalidade so que com int !
+	$vetor1 = array('', '', '','');
+	$vetor2 = array(0 , 0 , 0 , 0);
 	
-	
-	
-	
+	//parte dos calculos e erros
 	if(isset($_POST['btncalc'])){
-		$caixa1 = $_POST['numeroinicial'];
-		$caixa2 = $_POST['numerofinal'];
+		$vetor2[0] = $_POST['numeroinicial'];
+		$vetor2[1] = $_POST['numerofinal'];
 
-		if($caixa1 == $caixa2){
-			echo ERRO_NUMEROS_IGUAIS_IMPAR_PAR;
-		}
-
-
-		else if($caixa1 > $caixa2){
-			echo ERRO_NUMERO_INICIAL_MAIOR;
-		}
-
-		else if($caixa1 >= 0 || $caixa2 >= 0){
+		errosimparepar();
 		
+		if($vetor2[0] >= 0 || $vetor2[1] >= 0){
 			//caixa1 == contador
-			while($caixa1 <= $caixa2){
+			while($vetor2[0] <= $vetor2[1]){
 			
-			if($caixa1 % 2 == 0){
-				$quantidadepar++;
-				$resultadopar .= "$caixa1 <br>";	
+			if($vetor2[0] % 2 == 0){
+				$vetor2[2]++;
+				$vetor1[0] .= "$vetor2[0] <br>";	
 			}else{
-				$quantidadeimpar++;
-				$resultadoimpar .= "$caixa1 <br>";
+				$vetor2[3]++;
+				$vetor1[1] .= "$vetor2[0] <br>";
 			}
-			$caixa1++;
+			$vetor2[0]++;
 			}
-		}else{
-			echo ERRO_MSG_SELEÇAO_DE_NUMERO;
 		}
-			
-			
-
+		
 	} 
-
-	//funçoes importadas
-	$resultadotextboxinicial = pareimpartextboxinicial();
-	$resultadotextboxfinal = pareimpartextboxfinal();
+	//funçoes importadas textbox
+	$vetor1[2] = pareimpartextboxinicial();
+	$vetor1[3] = pareimpartextboxfinal();
 
 ?>
 
@@ -90,7 +66,7 @@
     <div class="menu-bg" id="menu-bg"></div>
     <script src="menu.js"></script>
 
-	 <!--Tabuada  -->
+	 <!--Par e Impar  -->
         <div id="conteudo">
             <div id="titulo">
                 Par e Impar
@@ -100,13 +76,13 @@
                 <form name="frmcalculadora" method="post" action="">
 				
 						NºInicial:<select name="numeroinicial" id="numeroinicial">
-						<option value="-2" selected>Por favor selecione um numero</option>
-						<?=$resultadotextboxinicial?>
+						<option value="-1" selected>Por favor selecione um numero</option>
+						<?=$vetor1[2];?>
 						</select>
 
 						NºFinal: <select name="numerofinal" id="numerofinal">
 						<option value="-1">Por favor selecione um numero</option>
-						<?=$resultadotextboxfinal?>
+						<?=$vetor1[3];?>
 						</select> <br>
 
 						<div id="container_opcoes">
@@ -115,18 +91,18 @@
 						<p class="textpar">NºPares:</p>	
 
 						<div id="caixapar">
-							<?= $resultadopar; ?>
+							<?= $vetor1[0]; ?>
 						</div>
 
-						<p class="textpar">Quantidade de Numeros pares: <?=$quantidadepar;?></p>
+						<p class="textpar">Quantidade de Numeros pares: <?=$vetor2[2];?></p>
 
 						<p class="textimpar">NºImpar:</p>
 
 						<div id="caixaimpar">
-						<?= $resultadoimpar; ?>
+						<?= $vetor1[1]; ?>
 						</div>
 
-						<p class="textimpar2">Quantidade de <br>Numeros Impares: <?=$quantidadeimpar;?></p>
+						<p class="textimpar2">Quantidade de <br>Numeros Impares: <?=$vetor2[3];?></p>
 					</form>
             </div>
            

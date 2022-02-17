@@ -2,30 +2,9 @@
 	//importaçoes
 	require_once('../Calculos/calculos.php');
 	require_once('../Erros/erros.php');
-	$valor1 = (int) 0;
-	$valor2 = (int) 0;
-	$calculo = (int) 0;
-	$contador = (int) 0;
 	$resultado = (string) null;
-
-	if(isset($_POST['btncalc'])){
-		$valor1 = $_POST['txtn1'];
-		$valor2 = $_POST['txtn2'];
-		
-		if($valor1 == null || $valor2 == null)
-			echo ERRO_MSG_CAIXA_VAZIA;
-		
-		else if(!is_numeric($valor1) || !is_numeric($valor2))
-			echo ERRO_MSG_CARACTER_DO_NUMERO;
-		else if($valor1 == 0)
-			echo ERRO_TABUADA_DO_ZERO;	
-		else{
-			$resultado = calculosTabuada($valor1,$valor2,$calculo,$contador);
-		}
-		
-	}
-
-
+	$caixas = array(0 , 0);
+	$resultado = calculosTabuada();
 ?>
 
 <!DOCTYPE html>
@@ -67,8 +46,8 @@
             <div id="form">
                 <form name="frmcalculadora" method="post" action="">
 				
-						Tabuada:<input type="text" name="txtn1" value="<?php echo($valor1);?>" > <br>
-						Contador:<input type="text" name="txtn2" value="<?php echo($valor2);?>" > <br>
+						Tabuada:<input type="text" name="txtn1" value="<?php echo($caixas[0]);?>" > <br>
+						Contador:<input type="text" name="txtn2" value="<?php echo($caixas[1]);?>" > <br>
 						<div id="container_opcoes">
 						<input type="submit" name="btncalc" value ="Calcular" id="botaocalcular" >	
 						</div>	
